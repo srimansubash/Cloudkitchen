@@ -2,10 +2,10 @@
   Spearheaded a cloud kitchen focused on small-scale gravy shops and homemade foods. Streamlined operations, integrated technology for efficient order management, and built local supplier networks. Enhanced delivery efficiency and customer satisfaction, bringing authentic, homemade flavors to a wider audience. This project highlighted the fusion of traditional cooking with modern delivery solutions.
   Gst and total price of food prediction has also been done
 
-**Technologies:**
-  Html
-  Css
-  Tailwind css
+**Technologies:** <br>
+  Html <br>
+  Css <br>
+  Tailwind css <br>
   JavaScript
 
 
