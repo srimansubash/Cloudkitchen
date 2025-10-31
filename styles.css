@@ -44,12 +44,12 @@ body {
 /* Header (Hero) Styles */
 .hero {
     background-image: url('herobg.jpg');
-    background-size: cover;
+    background-size:cover;
     background-position: center;
     background-attachment: fixed; /* This makes the background image fixed */
     color: #fff;
     text-align: center;
-    padding: 200px 0;
+    padding: 80px 0;
 }
 
 
@@ -83,44 +83,12 @@ body {
 }
 
 /* Menu Styles */
-.menu-items {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.menu-item {
-    flex: 0 1 calc(30% - 20px);
-    margin: 10px;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: left;
-}
-
+/* Menu Items */
 .menu-item img {
-    width: 100%; /* Ensure images fill their container */
-    height: auto;
-    max-width: 100%; /* Ensure images do not exceed their container */
-    display: block; /* Remove any extra spacing */
-    margin-bottom: 10px;
-}
-
-.menu-item h3 {
-    font-size: 1.5em;
-    margin-bottom: 10px;
-}
-
-.menu-item p {
-    font-size: 1.1em;
-    color: #666;
-    margin-bottom: 15px;
-}
-
-.menu-item .price {
-    font-size: 1.2em;
-    font-weight: bold;
-    color: #f44336;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
 }
 
 /* Footer Styles */footer {

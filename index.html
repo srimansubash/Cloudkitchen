@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cloud Kitchen</title>
-    <link rel="stylesheet" href="styles.css">    
-    <link rel="icon" href="icon.png">
-    <script src="https://kit.fontawesome.com/e61d547b58.js" crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cloud Kitchen</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="icon.png">
+  <script src="https://kit.fontawesome.com/e61d547b58.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
     <header class="hero">
         <!--<div class="logo">
@@ -15,7 +20,7 @@
         </div> !-->
         <section id="hero" class="hero">
         <div class="hero-content">
-            <h1>Welcome to Cloud Kitchen</h1>
+            <h1>Welcome to Cloud Kitchen 🍴</h1>
             <p>Your favorite meals delivered fast.</p>
             <a href="#menu" class="btn">Explore Menu</a>
         </div>
@@ -29,57 +34,97 @@
                   Our chefs blend passion with innovation to craft mouthwatering <br> dishes that redefine your dining experience. 
                  Whether you're craving traditional favorites or exploring new tastes, <br> we're here to serve you delicious meals made with the finest ingredients and utmost care.
                  <br> Join us on this gastronomic journey and discover the essence of great food, delivered with every order.</p>
-</div>
-    </section>
-
-    <section id="menu" class="section">
-        <div class="container">
-            <h2>Our Menu</h2>
-            <div class="menu-items">
-                <div class="menu-item">
-                    <img src="item1.jpg" alt="Item 1">
-                    <h3>Chettinadu Chicken Gravy</h3>
-                    <p><b>A rich in aroma Chettinadu Chicken Gravy 🔥</b></p>
-                    <p class="price">₹ 100.99</p>
-                </div>
-                <div class="menu-item">
-                    <img src="item2.jpg" alt="Item 2">
-                    <h3>Veg combo</h3>
-                    <p><b>Indian Thali 🙌</b></p>
-                    <p class="price">₹ 200.99</p>
-                </div>
-                <div class="menu-item">
-                    <img src="item3.png" alt="Item 2">
-                    <h3>Chicken Briyani</h3>
-                    <p>Mandi Biryani 🍛</p>
-                    <p class="price">₹ 250.99</p>
-                </div>
-                <div class="menu-item">
-                    <img src="item4.png" alt="Item 4">
-                    <h3>Chicken Nugets</h3>
-                    <p> <b> Craving chicken nuggets,</b> from various restaurants through services like <b> Grubhub.</b>
-                        <br> <b> Enjoy your nuggets! 🍗🔥</b></p>
-                    <p class="price">₹ 100.00</p>
-                </div>
-                <div class="menu-item">
-                    <img src="item5.jpg" alt="Item 4">
-                    <h3>Burger</h3>
-                    <p> <b>Burger King.</b> <br>  <b>Varieties (beef, chicken, or veggie) </b>
-                         <br> <b>Various toppings such as lettuce, tomato, cheese, pickles, onions, and condiments like ketchup and mayo. </b> 🍔</p>
-                    <p class="price">₹ 49.50</p>
-                </div>
-                <div class="menu-item">
-                    <img src="item6.jpg" alt="Item 4">
-                    <h3>Pasta</h3>
-                    <p><b>Fettuccine:</b> <br> Flat wide pasta, great with creamy sauces.🍝</p>
-                    <p class="price">₹ 50.00</p>
-                </div>
-                
-                <!-- Add more items as needed -->
-            </div>
         </div>
     </section>
 
+    <!-- Menu Section -->
+  <section id="menu" class="section">
+    <div class="container max-w-6xl mx-auto px-4">
+      <h2 class="text-3xl font-bold mb-8 text-center">Our Menu</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+
+        <!-- Menu Item 1 -->
+        <div class="menu-item bg-white rounded-xl shadow-md p-4 text-center">
+          <img src="item1.jpg" alt="Item 1" class="w-full h-48 object-cover rounded-lg mb-3">
+          <h3 class="text-xl font-semibold">Chettinadu Chicken Gravy</h3>
+          <p class="text-gray-600 mb-2">Aromatic & spicy South Indian gravy 🔥</p>
+          <p class="font-bold text-red-500">₹ <span class="price">100.99</span></p>
+          <button onclick="addToCart('Chettinadu Chicken Gravy', 100.99, 'item1.jpg')" class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-lg mt-2">Add to Cart</button>
+        </div>
+
+        <!-- Menu Item 2 -->
+        <div class="menu-item bg-white rounded-xl shadow-md p-4 text-center">
+          <img src="item2.jpg" alt="Item 2" class="w-full h-48 object-cover rounded-lg mb-3">
+          <h3 class="text-xl font-semibold">Veg Combo</h3>
+          <p class="text-gray-600 mb-2">Indian Thali 🙌</p>
+          <p class="font-bold text-red-500">₹ <span class="price">200.99</span></p>
+          <button onclick="addToCart('Veg Combo', 200.99, 'item2.jpg')" class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-lg mt-2">Add to Cart</button>
+        </div>
+
+        <!-- Menu Item 3 -->
+        <div class="menu-item bg-white rounded-xl shadow-md p-4 text-center">
+          <img src="item3.png" alt="Item 3" class="w-full h-48 object-cover rounded-lg mb-3">
+          <h3 class="text-xl font-semibold">Chicken Biryani</h3>
+          <p class="text-gray-600 mb-2">Mandi Style 🍛</p>
+          <p class="font-bold text-red-500">₹ <span class="price">250.99</span></p>
+          <button onclick="addToCart('Chicken Biryani', 250.99, 'item3.png')" class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-lg mt-2">Add to Cart</button>
+        </div>
+
+        <!-- Menu Item 4 -->
+        <div class="menu-item bg-white rounded-xl shadow-md p-4 text-center">
+          <img src="item4.png" alt="Item 4" class="w-full h-48 object-cover rounded-lg mb-3">
+          <h3 class="text-xl font-semibold">Chicken Nuggets</h3>
+          <p class="text-gray-600 mb-2">Craving chicken nuggets 🍗🔥</p>
+          <p class="font-bold text-red-500">₹ <span class="price">100.00</span></p>
+          <button onclick="addToCart('Chicken Nuggets', 100.00, 'item4.png')" class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-lg mt-2">Add to Cart</button>
+        </div>
+
+        <!-- Menu Item 5 -->
+        <div class="menu-item bg-white rounded-xl shadow-md p-4 text-center">
+          <img src="item5.jpg" alt="Item 5" class="w-full h-48 object-cover rounded-lg mb-3">
+          <h3 class="text-xl font-semibold">Burger</h3>
+          <p class="text-gray-600 mb-2">Various toppings 🍔</p>
+          <p class="font-bold text-red-500">₹ <span class="price">49.50</span></p>
+          <button onclick="addToCart('Burger', 49.50, 'item5.jpg')" class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-lg mt-2">Add to Cart</button>
+        </div>
+
+        <!-- Menu Item 6 -->
+        <div class="menu-item bg-white rounded-xl shadow-md p-4 text-center">
+          <img src="item6.jpg" alt="Item 6" class="w-full h-48 object-cover rounded-lg mb-3">
+          <h3 class="text-xl font-semibold">Pasta</h3>
+          <p class="text-gray-600 mb-2">Fettuccine 🍝</p>
+          <p class="font-bold text-red-500">₹ <span class="price">50.00</span></p>
+          <button onclick="addToCart('Pasta', 50.00, 'item6.jpg')" class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-lg mt-2">Add to Cart</button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+    <!-- Floating Cart Sidebar -->
+  <div class="fixed right-0 top-0 h-full z-50 flex">
+    <!-- Cart Button -->
+    <button id="cart-toggle" class="bg-yellow-500 text-white p-4 rounded-l-full shadow-lg fixed right-0 top-1/2 transform -translate-y-1/2 z-50">
+      <i class="fas fa-shopping-cart text-2xl"></i>
+      <span id="cart-count" class="absolute -top-2 -right-2 bg-red-600 text-white text-sm w-5 h-5 rounded-full flex items-center justify-center">0</span>
+    </button>
+
+    <!-- Sidebar -->
+    <div id="cart-sidebar" class="fixed right-[-400px] top-0 w-80 h-full bg-white shadow-xl p-4 transition-all duration-300">
+      <h3 class="text-lg font-semibold mb-3 border-b pb-2">🛒 Your Cart</h3>
+      <div id="cart-items" class="max-h-[60vh] overflow-y-auto"></div>
+
+      <div class="border-t pt-3 mt-3 text-sm">
+        <p>Subtotal: ₹<span id="subtotal">0.00</span></p>
+        <p>GST (18%): ₹<span id="gst">0.00</span></p>
+        <p>Delivery: ₹<span id="delivery">45.00</span></p>
+        <p class="font-bold text-lg mt-2">Total: ₹<span id="total">0.00</span></p>
+      </div>
+
+      <button id="close-cart" class="mt-4 bg-red-500 text-white px-4 py-2 rounded-lg w-full hover:bg-red-600">Close</button>
+    </div>
+  </div>
     <footer>
         <div class="footer-content">
             <div class="footer-left">
@@ -110,5 +155,6 @@
     </footer>
     
     
+    <script src="script.js"></script>
 </body>
 </html>
