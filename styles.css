@@ -90,7 +90,22 @@ body {
   object-fit: cover;
   border-radius: 10px;
 }
+/*#order-popup {
+  animation: fadeInOut 5s ease forwards;
+}
 
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateY(20px); }
+  10% { opacity: 1; transform: translateY(0); }
+  90% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(20px); }
+}*/
+
+/* Sidebar Styles */
+#cart-sidebar{
+border-top-left-radius: 2rem;
+border-bottom-left-radius: 2.5rem;
+}
 /* Footer Styles */footer {
     background-color: #333;
     color: #fff;
