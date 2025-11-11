@@ -4,35 +4,31 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cloud Kitchen</title>
-
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="icon" href="icon.png">
   <script src="https://kit.fontawesome.com/e61d547b58.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
 </head>
 
 <body>
-    <header class="hero">
-        <!--<div class="logo">
-            <img src="Logo.png" alt="Logo" width="200" height="200">
-        </div> !-->
-        <section id="hero" class="hero">
-        <div class="hero-content">
-            <h1>Welcome to Cloud Kitchen 🍴</h1>
-            <p>Your favorite meals delivered fast.</p>
-            <a href="#menu" class="btn">Explore Menu</a>
-        </div>
-        </section>
+      <header id="hero" class="hero">
+      <div class="hero-content">
+        <!-- <div class="logo">
+          <img src="Logo.png" alt="Logo" width="200" height="200">
+        </div> -->
+        <h1>Welcome to Cloud Kitchen 🍴</h1>
+        <p>Your favorite meals delivered fast.</p>
+        <a href="#menu" class="btn"><b>Explore Menu</b></a>
+      </div>
     </header>
 
     <section id="about" class="section">
         <div class="container">
             <h2>About Us</h2>
-            <p>Welcome to our cloud kitchen, where culinary creativity meets digital convenience. At <b> Melmo's Kitchen, </b> we specialize in delivering exceptional flavors right to your doorstep.
+            <p>Welcome to our cloud kitchen, where culinary creativity meets digital convenience. At <b> Cloud Kitchen, </b> we specialize in delivering exceptional flavors right to your doorstep.
                   Our chefs blend passion with innovation to craft mouthwatering <br> dishes that redefine your dining experience. 
                  Whether you're craving traditional favorites or exploring new tastes, <br> we're here to serve you delicious meals made with the finest ingredients and utmost care.
                  <br> Join us on this gastronomic journey and discover the essence of great food, delivered with every order.</p>
@@ -47,65 +43,73 @@
 
         <!-- Menu Item 1 -->
         <div class="menu-item bg-white rounded-xl shadow-md p-4 text-center">
-          <img src="item1.jpg" alt="Item 1" class="w-full h-48 object-cover rounded-lg mb-3">
+          <img src="images/homepage/item1.webp" alt="Item 1" class="w-full h-48 object-cover rounded-lg mb-3">
           <h3 class="text-xl font-semibold">Chettinadu Chicken Gravy</h3>
           <p class="text-gray-600 mb-2">Aromatic & spicy South Indian gravy 🔥</p>
           <p class="font-bold text-red-500">₹ <span class="price">100.99</span></p>
-          <button onclick="addToCart('Chettinadu Chicken Gravy', 100.99, 'item1.jpg')" class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-lg mt-2">Add to Cart</button>
+          <button onclick="addToCart('Chettinadu Chicken Gravy', 100.99, 'images/homepage/item1.webp')" class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-lg mt-2">Add to Cart</button>
         </div>
 
         <!-- Menu Item 2 -->
         <div class="menu-item bg-white rounded-xl shadow-md p-4 text-center">
-          <img src="item2.jpg" alt="Item 2" class="w-full h-48 object-cover rounded-lg mb-3">
+          <img src="images/homepage/item2.webp" alt="Item 2" class="w-full h-48 object-cover rounded-lg mb-3">
           <h3 class="text-xl font-semibold">Veg Combo</h3>
           <p class="text-gray-600 mb-2">Indian Thali 🙌</p>
           <p class="font-bold text-red-500">₹ <span class="price">200.99</span></p>
-          <button onclick="addToCart('Veg Combo', 200.99, 'item2.jpg')" class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-lg mt-2">Add to Cart</button>
+          <button onclick="addToCart('Veg Combo', 200.99, 'images/homepage/item2.webp')" class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-lg mt-2">Add to Cart</button>
         </div>
 
         <!-- Menu Item 3 -->
         <div class="menu-item bg-white rounded-xl shadow-md p-4 text-center">
-          <img src="item3.png" alt="Item 3" class="w-full h-48 object-cover rounded-lg mb-3">
+          <img src="images/homepage/item3.webp" alt="Item 3" class="w-full h-48 object-cover rounded-lg mb-3">
           <h3 class="text-xl font-semibold">Chicken Biryani</h3>
           <p class="text-gray-600 mb-2">Mandi Style 🍛</p>
           <p class="font-bold text-red-500">₹ <span class="price">250.99</span></p>
-          <button onclick="addToCart('Chicken Biryani', 250.99, 'item3.png')" class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-lg mt-2">Add to Cart</button>
+          <button onclick="addToCart('Chicken Biryani', 250.99, 'images/homepage/item3.webp')" class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-lg mt-2">Add to Cart</button>
         </div>
 
         <!-- Menu Item 4 -->
         <div class="menu-item bg-white rounded-xl shadow-md p-4 text-center">
-          <img src="item4.png" alt="Item 4" class="w-full h-48 object-cover rounded-lg mb-3">
+          <img src="images/homepage/item4.webp" alt="Item 4" class="w-full h-48 object-cover rounded-lg mb-3">
           <h3 class="text-xl font-semibold">Chicken Nuggets</h3>
           <p class="text-gray-600 mb-2">Craving chicken nuggets 🍗🔥</p>
           <p class="font-bold text-red-500">₹ <span class="price">100.00</span></p>
-          <button onclick="addToCart('Chicken Nuggets', 100.00, 'item4.png')" class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-lg mt-2">Add to Cart</button>
+          <button onclick="addToCart('Chicken Nuggets', 100.00, 'images/homepage/item4.webp')" class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-lg mt-2">Add to Cart</button>
         </div>
 
         <!-- Menu Item 5 -->
         <div class="menu-item bg-white rounded-xl shadow-md p-4 text-center">
-          <img src="item5.jpg" alt="Item 5" class="w-full h-48 object-cover rounded-lg mb-3">
+          <img src="images/homepage/item5.webp" alt="Item 5" class="w-full h-48 object-cover rounded-lg mb-3">
           <h3 class="text-xl font-semibold">Burger</h3>
           <p class="text-gray-600 mb-2">Various toppings 🍔</p>
           <p class="font-bold text-red-500">₹ <span class="price">49.50</span></p>
-          <button onclick="addToCart('Burger', 49.50, 'item5.jpg')" class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-lg mt-2">Add to Cart</button>
+          <button onclick="addToCart('Burger', 49.50, 'images/homepage/item5.webp')" class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-lg mt-2">Add to Cart</button>
         </div>
 
         <!-- Menu Item 6 -->
         <div class="menu-item bg-white rounded-xl shadow-md p-4 text-center">
-          <img src="item6.jpg" alt="Item 6" class="w-full h-48 object-cover rounded-lg mb-3">
+          <img src="images/homepage/item6.webp" alt="Item 6" class="w-full h-48 object-cover rounded-lg mb-3">
           <h3 class="text-xl font-semibold">Pasta</h3>
           <p class="text-gray-600 mb-2">Fettuccine 🍝</p>
           <p class="font-bold text-red-500">₹ <span class="price">50.00</span></p>
-          <button onclick="addToCart('Pasta', 50.00, 'item6.jpg')" class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-lg mt-2">Add to Cart</button>
+          <button onclick="addToCart('Pasta', 50.00, 'images/homepage/item6.webp')" class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-lg mt-2">Add to Cart</button>
         </div>
-
+        
+        
+        
       </div>
     </div>
+    <!-- Add this just BELOW your 6 menu items (inside #menu section) -->
+        <div class="text-center mt-10">
+          <button id="view-more-btn" class="bg-red-500 hover:bg-red-600 text-white px-6 py-3 rounded-lg text-lg font-semibold shadow-md">
+            <b>Order More Foods</b>
+          </button>
+        </div>
   </section>
 
 
      <!-- Floating Cart Sidebar -->
-  <div class="fixed right-0 top-0 h-full z-50 flex">
+    <div class="fixed right-0 top-0 h-full z-50 flex">
     <!-- Cart Button -->
     <button id="cart-toggle" class="bg-yellow-500 text-white p-4 rounded-l-full shadow-lg fixed right-0 top-1/2 transform -translate-y-1/2 z-50">
       <i class="fas fa-shopping-cart text-2xl"></i>
@@ -123,50 +127,49 @@
         <p>Delivery: ₹<span id="delivery">0.00</span></p>
         <p class="font-bold text-lg mt-2">Total: ₹<span id="total">0.00</span></p>
       </div>
-<button id="place-order" class="bg-red-500 text-white px-4 py-2 rounded-lg w-full hover:bg-red-600 mt-4">
-  Place Order
-</button>
+      <button id="place-order" class="bg-red-500 text-white px-4 py-2 rounded-lg w-full hover:bg-red-600 mt-4">
+        Place Order
+      </button>
 
-
-      <div id="order-summary" class="hidden p-4 bg-white rounded shadow-lg mt-4 max-h-96 overflow-auto"></div>
 
     </div>
-  </div>
-  <div id="order-popup" class="fixed bottom-4 right-4 bg-white shadow-lg rounded-lg p-4 w-80 max-w-sm hidden z-50">
-  <div id="order-popup-content"></div>
-  <button id="download-pdf" class="bg-red-500 text-white px-4 py-2 rounded-lg w-full hover:bg-red-600 mt-4">Download PDF</button>
-  <button id="order-popup-close" class="absolute top-1 right-2 text-gray-500 hover:text-gray-800">×</button>
-</div>
+      </div>
+      <div id="order-popup" class="fixed bottom-4 right-4 bg-white shadow-lg rounded-lg p-4 w-80 max-w-sm hidden z-50">
+      <div id="order-popup-content"></div>
+      <button id="download-pdf" class="bg-red-500 text-white px-4 py-2 rounded-lg w-full hover:bg-red-600 mt-4">Download PDF</button>
+      <button id="order-popup-close" class="absolute top-1 right-2 text-gray-500 hover:text-gray-800">×</button>
+    </div>
 
-
+    <section id="footer">
     <footer>
-        <div class="footer-content">
+        <div  class="footer-content">
             <div class="footer-left">
-                <h3>Useful Links</h3>
+                <h3><b>Useful Links</b></h3>
                 <a href="#hero">Home</a>
                 <a href="#menu">Menu</a>
                 <a href="#about">About Us</a>
-                <a href="#">Services</a>
+                <a href="#footer">Services</a>
             </div>
             <div class="footer-center">
-                <h3>Cloud Kitchen</h3>
+                <h3><b>Cloud Kitchen</b></h3>
                 <p>Delicious meals delivered to your door.</p>
             </div>
             <div class="footer-right">
-                <h3>Contact</h3>
+                <h3><b>Contact</b></h3>
                 <p>Email: info@cloudkitchen.com</p>
                 <p>Phone: +123 456 7890</p>
                 <div class="social-icons">
                 
                     <a style="color:white;" href="https://www.instagram.com/?hl=en"><i class="fab fa-instagram"></i></a>
                      <a style="color:white;" href="https://www.facebook.com/"><i class="fab fa-facebook"></i></a>
-                     <a style="color:white;" href="https://twitter.com/i/flow/login"><i class="fab fa-twitter"></i></a>
+                     <a style="color:white;" href="https://twitter.com/i/flow/login"><i class="fa-brands fa-x-twitter"></i></a>
                    
                 </div>
             </div>
         </div>
         <p class="footer-bottom">&copy; 2025 Cloud Kitchen. All rights reserved.</p>
     </footer>
+    </section>
     
     
     <script src="script.js"></script>

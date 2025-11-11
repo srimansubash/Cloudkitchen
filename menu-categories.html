@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Explore Foods by Category - Cloud Kitchen</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="menu-categories.css">
+  <link rel="icon" href="icon.png">
+  <script src="https://kit.fontawesome.com/e61d547b58.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+</head>
+<body class="bg-gray-100">
+
+ <!-- HEADER -->
+<header class="bg-yellow-500 text-white py-5 shadow-md">
+  <div class="container mx-auto px-4 flex items-center justify-between">
+    <!-- Left: Hamburger -->
+    <button id="left-menu-toggle" class="text-2xl text-white hover:text-gray-100 focus:outline-none"
+            aria-label="Open menu" aria-expanded="false">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+
+    <!-- Center: Title -->
+    <div class="text-center flex-1">
+      <h1 class="text-3xl font-bold">🍴 Explore Foods by Category</h1>
+      <p class="mt-1 text-lg">All your favorite dishes — in one place!</p>
+    </div>
+
+    <!-- Right spacer to balance layout -->
+    <span class="w-6"></span>
+  </div>
+</header>
+
+<!-- LEFT DRAWER -->
+<aside id="left-drawer"
+       class="fixed top-0 left-0 h-full w-72 bg-white shadow-2xl -translate-x-full transition-transform duration-300 ease-in-out z-50">
+  <!-- Drawer header -->
+<div class="flex items-center justify-between px-4 py-4 border-b">
+  <a href="menu-categories.html"
+     class="group inline-flex items-center"
+     aria-label="Go to categories">
+    <span class="text-xl font-semibold transition-colors duration-200 group-hover:text-yellow-500">
+      Cloud Kitchen
+    </span>
+  </a>
+  <button id="left-menu-close"
+          class="text-2xl text-gray-600 hover:text-gray-900"
+          
+          aria-label="Close menu">
+    <i class="fa-solid fa-xmark"></i>
+  </button>
+</div>
+
+
+  <!-- Drawer links -->
+  <nav class="px-4 py-4 space-y-2 text-gray-800">
+    <a href="index.html" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100">
+      <i class="fa-solid fa-house text-yellow-500"></i> <span>Home</span>
+    </a>
+    <a href="#menu" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100">
+      <i class="fa-solid fa-utensils text-yellow-500"></i> <span>Menu</span>
+    </a>
+    <a href="#services" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100">
+      <i class="fa-solid fa-briefcase text-yellow-500"></i> <span>Services</span>
+    </a>
+    <a href="index.html#about" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100">
+      <i class="fa-solid fa-circle-info text-yellow-500"></i> <span>About Us</span>
+    </a>
+    <a href="#footer" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100">
+      <i class="fa-solid fa-envelope text-yellow-500"></i> <span>Contact</span>
+    </a>
+    <!-- Login Button (visible if not logged in) 
+    <a id="login-button" href="#" onclick="login()" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100">
+      <i class="fa-solid fa-user text-yellow-500"></i> <span>Login</span>
+    </a>-->
+
+    <!-- Logout Button (visible if logged in) 
+    <a id="logout-button" href="#" onclick="logout()" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 hidden">
+      <i class="fa-solid fa-sign-out-alt text-yellow-500"></i> <span>Logout</span>
+    </a>-->
+  </nav>
+</aside>
+
+<!-- Login Modal
+<div id="login-modal" class="fixed inset-0 bg-black/50 hidden z-50 flex items-center justify-center">
+  <div class="bg-white rounded-lg shadow-xl p-6 w-96 relative">
+    <h2 class="text-2xl font-bold mb-4">Login</h2>
+    <p class="mb-3">Login with Gmail or Phone OTP</p>
+    
+    <button id="gmail-login" class="w-full bg-red-500 text-white px-4 py-2 rounded-lg mb-3 hover:bg-red-600">Login with Gmail</button>
+    <button id="phone-login" class="w-full bg-yellow-500 text-white px-4 py-2 rounded-lg hover:bg-yellow-600">Login with Phone OTP</button>
+    
+    <button id="login-close" class="absolute top-2 right-3 text-gray-500 hover:text-gray-800 text-xl">×</button>
+  </div>
+</div> -->
+
+
+<!-- SCRIM (click to close) -->
+<div id="left-drawer-scrim"
+     class="fixed inset-0 bg-black/40 hidden z-40"></div>
+
+
+  <!-- MAIN CONTENT -->
+  <main class="container mx-auto px-4 py-10 space-y-16">
+    <section id="services" clas="services"></section>
+    <!-- CATEGORY BLOCK TEMPLATE -->
+    <section class="category">
+      <h2 class="text-2xl font-semibold mb-5 border-b-4 border-yellow-500 pb-2 inline-block">Indian Dishes</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <section class="category-menu">
+        <!-- Indian Dishes -->
+        <div class="bg-white rounded-xl shadow-lg p-4 text-center hover:shadow-2xl transition">
+          <img src="images/menu/Indian Dishes/indian1.jpg" alt="Paneer Butter Masala" class="rounded-lg w-full h-40 object-cover mb-3">
+          <h3 class="text-xl font-semibold">Paneer Butter Masala</h3>
+          <p class="text-gray-600 text-sm mb-2">Creamy tomato gravy 🧈</p>
+          <p class="font-bold text-red-500">₹180</p>
+          <button onclick="addToCart('Paneer Butter Masala',180,'images/menu/Indian Dishes/indian1.jpg')" class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-lg mt-2">Add to Cart</button>
+        </div>
+        </section>
+        <div class="bg-white rounded-xl shadow-lg p-4 text-center hover:shadow-2xl transition">
+          <img src="images/menu/Indian Dishes/indian2.jpg" alt="Roti Curry" class="rounded-lg w-full h-40 object-cover mb-3">
+          <h3 class="text-xl font-semibold">Roti Curry</h3>
+          <p class="text-gray-600 text-sm mb-2">Soft roti with curry 🍛</p>
+          <p class="font-bold text-red-500">₹120</p>
+          <button onclick="addToCart('Roti Curry',120,'images/menu/Indian Dishes/indian2.jpg')" class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-lg mt-2">Add to Cart</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- GRAVIES -->
+    <section class="category">
+      <h2 class="text-2xl font-semibold mb-5 border-b-4 border-yellow-500 pb-2 inline-block">Gravies</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div class="bg-white rounded-xl shadow-lg p-4 text-center hover:shadow-2xl transition">
+          <img src="images/menu/Gravies/gravy1.webp" alt="Chettinad Chicken Gravy" class="rounded-lg w-full h-40 object-cover mb-3">
+          <h3 class="text-xl font-semibold">Chettinad Chicken Gravy</h3>
+          <p class="text-gray-600 text-sm mb-2">Spicy South Indian style 🔥</p>
+          <p class="font-bold text-red-500">₹200</p>
+          <button onclick="addToCart('Chettinad Chicken Gravy',200,'images/menu/Gravies/gravy1.webp')" class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-lg mt-2">Add to Cart</button>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-lg p-4 text-center hover:shadow-2xl transition">
+          <img src="images/menu/Gravies/gravy2.jpg" alt="Mutton Pepper Gravy" class="rounded-lg w-full h-40 object-cover mb-3">
+          <h3 class="text-xl font-semibold">Mutton Pepper Gravy</h3>
+          <p class="text-gray-600 text-sm mb-2">Rich pepper flavor 🍖</p>
+          <p class="font-bold text-red-500">₹250</p>
+          <button onclick="addToCart('Mutton Pepper Gravy',250,'images/menu/Gravies/gravy2.jpg')" class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-lg mt-2">Add to Cart</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- BIRYANI -->
+    <section class="category">
+      <h2 class="text-2xl font-semibold mb-5 border-b-4 border-yellow-500 pb-2 inline-block">Biryani</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div class="bg-white rounded-xl shadow-lg p-4 text-center hover:shadow-2xl transition">
+          <img src="images/menu/Biryani/biryani1.webp" alt="Hyderabadi Chicken Biryani" class="rounded-lg w-full h-40 object-cover mb-3">
+          <h3 class="text-xl font-semibold">Hyderabadi Chicken Biryani</h3>
+          <p class="text-gray-600 text-sm mb-2">Spicy & aromatic 🍗</p>
+          <p class="font-bold text-red-500">₹230</p>
+          <button onclick="addToCart('Hyderabadi Chicken Biryani',230,'images/menu/Biryani/biryani1.webp')" class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-lg mt-2">Add to Cart</button>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-lg p-4 text-center hover:shadow-2xl transition">
+          <img src="images/menu/Biryani/biryani2.jpg" alt="Veg Biryani" class="rounded-lg w-full h-40 object-cover mb-3">
+          <h3 class="text-xl font-semibold">Veg Biryani</h3>
+          <p class="text-gray-600 text-sm mb-2">Perfect vegetarian flavor 🥦</p>
+          <p class="font-bold text-red-500">₹180</p>
+          <button onclick="addToCart('Veg Biryani',180,'images/menu/Biryani/biryani2.jpg')" class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-lg mt-2">Add to Cart</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- You can continue adding Pizza, Burger, Starters, Beverages, Desserts in the same pattern -->
+
+</main>
+
+  <!-- Floating Cart Sidebar -->
+  <div class="fixed right-0 top-0 h-full z-50 flex">
+    <!-- Cart Button -->
+    <button id="cart-toggle" class="bg-yellow-500 text-white p-4 rounded-l-full shadow-lg fixed right-0 top-1/2 transform -translate-y-1/2 z-50">
+      <i class="fas fa-shopping-cart text-2xl"></i>
+      <span id="cart-count" class="absolute -top-2 -right-2 bg-red-600 text-white text-sm w-5 h-5 rounded-full flex items-center justify-center">0</span>
+    </button>
+
+    <!-- Sidebar -->
+    <div id="cart-sidebar" class="fixed right-[-400px] top-0 w-80 h-full bg-white shadow-xl p-4 transition-all duration-300">
+      <h3 class="text-lg font-semibold mb-3 border-b pb-2">🛒 Your Cart</h3>
+      <div id="cart-items" class="max-h-[60vh] overflow-y-auto"></div>
+
+      <div class="border-t pt-3 mt-3 text-sm">
+        <p>Subtotal: ₹<span id="subtotal">0.00</span></p>
+        <p>GST (18%): ₹<span id="gst">0.00</span></p>
+        <p>Delivery: ₹<span id="delivery">0.00</span></p>
+        <p class="font-bold text-lg mt-2">Total: ₹<span id="total">0.00</span></p>
+      </div>
+      <button id="place-order" class="bg-red-500 text-white px-4 py-2 rounded-lg w-full hover:bg-red-600 mt-4">
+        Place Order
+      </button>
+      <div id="payment-qr" aria-label="Payment QR Code"></div>
+      <script>
+      // replace QR_SRC with path you give
+      const QR_SRC = 'images/qr/pay-qr.png';
+      const qrContainer = document.getElementById('payment-qr');
+      if(qrContainer){
+      const img = document.createElement('img');
+      img.src = QR_SRC; img.alt = 'Payment QR';
+      img.style.maxWidth = '220px'; img.style.width = '100%'; img.style.height = 'auto';
+      qrContainer.appendChild(img);
+      }
+      </script>
+    </div>
+  </div>
+
+  <div id="order-popup" class="fixed bottom-4 right-4 bg-white shadow-lg rounded-lg p-4 w-80 max-w-sm hidden z-50">
+    <div id="order-popup-content"></div>
+    <button id="download-pdf" class="bg-red-500 text-white px-4 py-2 rounded-lg w-full hover:bg-red-600 mt-4">Download PDF</button>
+    <button id="order-popup-close" class="absolute top-1 right-2 text-gray-500 hover:text-gray-800">×</button>
+  </div>
+
+  <!-- FOOTER -->
+  <section id="footer">
+    <footer>
+      <div class="footer-content">
+        <div class="footer-left">
+          <h3><b>Useful Links</b></h3>
+          <a href="index.html">Home</a>
+          <a href="#services">Menu</a>
+          <a href="index.html#about">About Us</a>
+          <a href="#footer">Services</a>
+        </div>
+        <div class="footer-center">
+          <h3><b>Cloud Kitchen</b></h3>
+          <p>Delicious meals delivered to your door.</p>
+        </div>
+        <div class="footer-right">
+          <h3><b>Contact</b></h3>
+          <p>Email: info@cloudkitchen.com</p>
+          <p>Phone: +123 456 7890</p>
+          <div class="social-icons">
+            <a style="color:white;" href="https://www.instagram.com/?hl=en"><i class="fab fa-instagram"></i></a>
+            <a style="color:white;" href="https://www.facebook.com/"><i class="fab fa-facebook"></i></a>
+            <a style="color:white;" href="https://twitter.com/i/flow/login"><i class="fa-brands fa-x-twitter"></i></a>
+          </div>
+        </div>
+      </div>
+      <p class="footer-bottom">&copy; 2025 Cloud Kitchen. All rights reserved.</p>
+    </footer>
+  </section>
+
+  <!-- ✅ Add This Script (Fixes Navbar Toggle) -->
+<script>
+  const btn = document.getElementById('left-menu-toggle');
+  const closeBtn = document.getElementById('left-menu-close');
+  const drawer = document.getElementById('left-drawer');
+  const scrim = document.getElementById('left-drawer-scrim');
+  const icon = btn.querySelector('i');
+
+  function setDrawer(open) {
+    if (open) {
+      drawer.classList.remove('-translate-x-full');
+      scrim.classList.remove('hidden');
+      btn.setAttribute('aria-expanded', 'true');
+      icon.classList.remove('fa-bars');
+      icon.classList.add('fa-xmark');
+    } else {
+      drawer.classList.add('-translate-x-full');
+      scrim.classList.add('hidden');
+      btn.setAttribute('aria-expanded', 'false');
+      icon.classList.remove('fa-xmark');
+      icon.classList.add('fa-bars');
+    }
+  }
+
+  btn.addEventListener('click', () => {
+    const isOpen = !drawer.classList.contains('-translate-x-full');
+    setDrawer(!isOpen);
+  });
+
+  closeBtn.addEventListener('click', () => setDrawer(false));
+  scrim.addEventListener('click', () => setDrawer(false));
+
+  // Start closed with hamburger visible
+  setDrawer(false);
+</script>
+
+
+
+  <script src="script.js"></script>
+</body>
+</html>
