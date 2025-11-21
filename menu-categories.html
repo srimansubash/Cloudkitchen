@@ -85,7 +85,7 @@
   </nav>
 </aside>
 
-<!-- Login Modal
+<!-- Login Modal 
 <div id="login-modal" class="fixed inset-0 bg-black/50 hidden z-50 flex items-center justify-center">
   <div class="bg-white rounded-lg shadow-xl p-6 w-96 relative">
     <h2 class="text-2xl font-bold mb-4">Login</h2>
@@ -96,8 +96,8 @@
     
     <button id="login-close" class="absolute top-2 right-3 text-gray-500 hover:text-gray-800 text-xl">×</button>
   </div>
-</div> -->
-
+</div>
+-->
 
 <!-- SCRIM (click to close) -->
 <div id="left-drawer-scrim"
@@ -128,6 +128,30 @@
           <p class="font-bold text-red-500">₹120</p>
           <button onclick="addToCart('Roti Curry',120,'images/menu/Indian Dishes/indian2.jpg')" class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-lg mt-2">Add to Cart</button>
         </div>
+        <div class="bg-white rounded-xl shadow-lg p-4 text-center hover:shadow-2xl transition">
+          <img src="images/menu/Indian Dishes/indian3.jpg" alt="Kadai Paneer" class="rounded-lg w-full h-40 object-cover mb-3">
+          <h3 class="text-xl font-semibold">Kadai Paneer</h3>
+          <p class="text-gray-600 text-sm mb-2">Spicy onion-tomato gravy 🌶️</p>
+          <p class="font-bold text-red-500">₹190</p>
+          <button onclick="addToCart('Kadai Paneer',190,'images/menu/Indian Dishes/indian3.jpg')" class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-lg mt-2">Add to Cart</button>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-lg p-4 text-center hover:shadow-2xl transition">
+          <img src="images/menu/Indian Dishes/indian4.jpg" alt="Aloo Gobi" class="rounded-lg w-full h-40 object-cover mb-3">
+          <h3 class="text-xl font-semibold">Aloo Gobi</h3>
+          <p class="text-gray-600 text-sm mb-2">Potato & cauliflower sabzi 🥔</p>
+          <p class="font-bold text-red-500">₹130</p>
+          <button onclick="addToCart('Aloo Gobi',130,'images/menu/Indian Dishes/indian4.jpg')" class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-lg mt-2">Add to Cart</button>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-lg p-4 text-center hover:shadow-2xl transition">
+          <img src="images/menu/Indian Dishes/indian5.jpg" alt="Bhindi Masala" class="rounded-lg w-full h-40 object-cover mb-3">
+          <h3 class="text-xl font-semibold">Bhindi Masala</h3>
+          <p class="text-gray-600 text-sm mb-2">Crispy okra stir fry 🍲</p>
+          <p class="font-bold text-red-500">₹140</p>
+          <button onclick="addToCart('Bhindi Masala',140,'images/menu/Indian Dishes/indian5.jpg')" class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-lg mt-2">Add to Cart</button>
+        </div>
+
       </div>
     </section>
 
@@ -201,18 +225,6 @@
       <button id="place-order" class="bg-red-500 text-white px-4 py-2 rounded-lg w-full hover:bg-red-600 mt-4">
         Place Order
       </button>
-      <div id="payment-qr" aria-label="Payment QR Code"></div>
-      <script>
-      // replace QR_SRC with path you give
-      const QR_SRC = 'images/qr/pay-qr.png';
-      const qrContainer = document.getElementById('payment-qr');
-      if(qrContainer){
-      const img = document.createElement('img');
-      img.src = QR_SRC; img.alt = 'Payment QR';
-      img.style.maxWidth = '220px'; img.style.width = '100%'; img.style.height = 'auto';
-      qrContainer.appendChild(img);
-      }
-      </script>
     </div>
   </div>
 

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales Reports - Cloud Kitchen</title>
+    <link rel="stylesheet" href="sales-dashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+<div class="sales-dashboard-container" id="salesReportSection">
+    
+    <!-- 🧭 Dashboard Header -->
+    <div class="dashboard-header">
+        <h1>Sales Reports</h1>
+        <div class="header-actions">
+            <!-- 🔗 Navigation Button -->
+            <button id="goToMenuBtn">Go to Menu</button>
+        </div>
+    </div>
+
+    <!-- ⚙️ Dashboard Controls -->
+    <div class="dashboard-controls">
+        <select id="salesPeriod">
+            <option value="today">Today</option>
+            <option value="month">This Month</option>
+            <option value="year">This Year</option>
+            <option value="custom">Custom Range</option>
+        </select>
+        <input type="date" id="fromDate" style="display:none">
+        <input type="date" id="toDate" style="display:none">
+        <button id="exportPdfBtn">EXPORT PDF</button>
+    </div>
+
+    <!-- 💰 Summary Section -->
+    <div class="dashboard-summary">
+        <div>
+            <span>Total Revenue</span>
+            <div id="totalRevenue" style="font-size:2.5rem;margin-top:8px;"></div>
+        </div>
+        <div>
+            <span>Total Transactions</span>
+            <div id="totalTx" style="font-size:2.5rem;margin-top:8px;"></div>
+        </div>
+    </div>
+
+    <!-- 📋 Sales List -->
+    <div class="sale-list" id="saleList"></div>
+</div>
+
+<script src="sales-dashboard.js"></script>
+
+<script>
+    // 🧭 Navigation to Menu Page
+    document.getElementById("goToMenuBtn").addEventListener("click", () => {
+        window.location.href = "menu-categories.html";
+    });
+</script>
+
+</body>
+</html>

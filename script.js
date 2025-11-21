@@ -206,7 +206,7 @@ function closeAndClearOrder() {
 
 function scheduleAutoClose() {
   if (closeTimer) clearTimeout(closeTimer);
-  closeTimer = setTimeout(closeAndClearOrder, 60000); // 25 seconds
+  closeTimer = setTimeout(closeAndClearOrder, 30000); // 25 seconds
 }
 
 // ---------- Place order ----------
