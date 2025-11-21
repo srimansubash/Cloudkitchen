@@ -38,7 +38,6 @@ body {
 
 .section p {
     font-size: 1.1em;
-    color: #666;
 }
 
 /* Header (Hero) Styles */
@@ -49,7 +48,7 @@ body {
     background-attachment: fixed; /* This makes the background image fixed */
     color: #fff;
     text-align: center;
-    padding: 80px 0;
+    padding: 12% 0;
 }
 
 
@@ -89,8 +88,30 @@ body {
   height: 200px;
   object-fit: cover;
   border-radius: 10px;
+  
+  transition: transform 0.3s ease-in-out;
 }
 
+.menu-item:hover img {
+  transform: scale(1.05);
+}
+
+/*#order-popup {
+  animation: fadeInOut 5s ease forwards;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateY(20px); }
+  10% { opacity: 1; transform: translateY(0); }
+  90% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(20px); }
+}*/
+
+/* Sidebar Styles */
+#cart-sidebar{
+border-top-left-radius: 2rem;
+border-bottom-left-radius: 2.5rem;
+}
 /* Footer Styles */footer {
     background-color: #333;
     color: #fff;
