@@ -71,7 +71,7 @@ header {
     box-shadow: var(--shadow-lg);
     position: sticky;
     top: 0;
-    z-index: 100;
+    z-index: 90;
 }
 
 header .container {
@@ -91,7 +91,6 @@ header p {
     font-size: 1.1rem;
     margin-top: 0.25rem;
     opacity: 0.95;
-    text-align: center;
 }
 
 #left-menu-toggle {
@@ -379,7 +378,7 @@ main {
     padding: 1rem;
     border-radius: 50px 0 0 50px;
     cursor: pointer;
-    z-index: 1000;
+    z-index: 1100;
     box-shadow: var(--shadow-lg);
     transition: all 0.3s ease;
 }
@@ -417,9 +416,6 @@ main {
 }
 
 #cart-sidebar {
-    display: flex;              /* Flexbox container */
-    flex-direction: column;     /* Stack items vertically */
-    height: 100vh;
     position: fixed;
     right: -400px;
     top: 0;
@@ -430,10 +426,13 @@ main {
     box-shadow: var(--shadow-2xl);
     padding: 1.5rem;
     transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: 999;
+    z-index: 1099;
     overflow-y: auto;
-    border-top-left-radius: 2%;  
-    border-bottom-left-radius: 2%; 
+    overflow-x: hidden;
+}
+
+#cart-sidebar.open {
+    right: 0 !important;
 }
 
 #cart-sidebar::-webkit-scrollbar {
@@ -456,14 +455,17 @@ main {
     border-bottom: 2px solid var(--primary-yellow);
     padding-bottom: 0.75rem;
     margin-bottom: 1rem;
-    flex-shrink: 0;    
+    position: sticky;
+    top: 0;
+    background: var(--bg-primary);
+    z-index: 10;
 }
 
 #cart-items {
-     flex: 1;   
-    max-height: 55vh;
+    max-height: 50vh;
     overflow-y: auto;
     margin-bottom: 1rem;
+    padding-right: 0.5rem;
 }
 
 #cart-items > div {
@@ -554,10 +556,11 @@ main {
 }
 
 .border-t {
-    flex-shrink: 0;    
     border-top: 2px solid var(--border-color);
     padding-top: 1rem;
-    margin-top: 1rem;
+    margin-top: 0.5rem;
+    background: var(--bg-primary);
+    flex-shrink: 0;
 }
 
 .border-t p {
@@ -565,10 +568,11 @@ main {
     justify-content: space-between;
     margin: 0.5rem 0;
     color: var(--text-primary);
+    font-size: 0.95rem;
 }
 
 .border-t p.font-bold {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     color: var(--primary-yellow);
     font-weight: 700;
     margin-top: 1rem;
@@ -577,7 +581,22 @@ main {
 }
 
 #place-order {
-    flex-shrink: 0;    
+    width: 100%;
+    background: var(--primary-red);
+    color: var(--text-light);
+    border: none;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+    box-shadow: var(--shadow-md);
+    flex-shrink: 0;
+}
+
+#place-order {
     width: 100%;
     background: var(--primary-red);
     color: var(--text-light);
@@ -602,6 +621,25 @@ main {
     transform: translateY(0);
 }
 
+/* Cart items scrollbar styling */
+#cart-items::-webkit-scrollbar {
+    width: 6px;
+}
+
+#cart-items::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+    border-radius: 3px;
+}
+
+#cart-items::-webkit-scrollbar-thumb {
+    background: var(--primary-yellow);
+    border-radius: 3px;
+}
+
+#cart-items::-webkit-scrollbar-thumb:hover {
+    background: var(--dark-yellow);
+}
+
 /* ========================================
    ORDER POPUP
    ======================================== */
@@ -613,15 +651,37 @@ main {
     box-shadow: var(--shadow-2xl);
     border-radius: 1rem;
     padding: 1.5rem;
-    width: 400px;
+    width: 450px;
     max-width: 90vw;
-    z-index: 1001;
+    max-height: 85vh;
+    z-index: 1101;
     border: 3px solid var(--primary-yellow);
     animation: slideInUp 0.4s ease-out;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
 }
 
 #order-popup.hidden {
     display: none;
+}
+
+#order-popup::-webkit-scrollbar {
+    width: 8px;
+}
+
+#order-popup::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+    border-radius: 4px;
+}
+
+#order-popup::-webkit-scrollbar-thumb {
+    background: var(--primary-yellow);
+    border-radius: 4px;
+}
+
+#order-popup::-webkit-scrollbar-thumb:hover {
+    background: var(--dark-yellow);
 }
 
 @keyframes slideInUp {
@@ -707,6 +767,7 @@ footer {
     background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
     color: var(--text-light);
     padding: 3rem 2rem 1rem;
+    margin-top: 4rem;
 }
 
 .footer-content {
@@ -716,17 +777,7 @@ footer {
     max-width: 1200px;
     margin: 0 auto 2rem;
 }
-.footer-left {
-    text-align: left; /* Align footer-left content to the left */
-}
 
-.footer-center {
-    text-align: center; /* Center the footer-center content */
-}
-
-.footer-right {
-    text-align: right; /* Align footer-right content to the right */
-}
 .footer-left h3,
 .footer-center h3,
 .footer-right h3 {
@@ -740,23 +791,25 @@ footer {
     color: var(--text-light);
     text-decoration: none;
     margin: 0.5rem 0;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
+    padding-left: 0;
 }
 
 .footer-left a:hover {
     color: var(--primary-yellow);
-    padding-left: 5px;
+    padding-left: 8px;
 }
 
-.footer-center p {
-    color: var(--text-secondary);
+.footer-center p,
+.footer-right p {
+    color: #d1d5db;
+    margin: 0.5rem 0;
 }
 
 .social-icons {
     display: flex;
     gap: 1rem;
     margin-top: 1rem;
-    justify-content: flex-end;
 }
 
 .social-icons a {
@@ -768,20 +821,20 @@ footer {
     background: var(--primary-yellow);
     border-radius: 50%;
     transition: all 0.3s ease;
+    color: var(--text-light);
 }
 
 .social-icons a:hover {
     background: var(--dark-yellow);
-    transform: translateY(-3px);
+    transform: translateY(-4px) scale(1.1);
 }
 
 .footer-bottom {
     text-align: center;
     padding-top: 1.5rem;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
-    color: var(--text-secondary);
+    color: #9ca3af;
 }
-
 
 /* ========================================
    ANIMATIONS

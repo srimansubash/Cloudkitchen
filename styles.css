@@ -82,6 +82,10 @@ body {
     color: var(--text-light);
     padding: 2rem;
     animation: fadeInUp 1s ease-out;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 1rem;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
 }
 
 .hero h1 {
@@ -175,13 +179,6 @@ body {
 #menu {
     background: var(--bg-secondary);
 }
-#menu h2 {
-    font-size: 2.5rem;
-    margin-bottom: 3rem; /* Add space between title and menu items */
-    text-align: center;
-    color: var(--text-primary);
-}
-
 
 #menu .container {
     max-width: 1400px;
@@ -190,7 +187,7 @@ body {
 #menu .grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 2rem;
+    gap: 1.5rem;
 }
 
 .menu-item {
@@ -203,6 +200,8 @@ body {
     display: flex;
     flex-direction: column;
     text-align: center;
+    max-width: 350px;
+    margin: 0 auto;
 }
 
 .menu-item:hover {
@@ -212,7 +211,7 @@ body {
 
 .menu-item img {
     width: 100%;
-    height: 240px;
+    height: 200px;
     object-fit: cover;
     transition: transform 0.3s ease;
 }
@@ -222,7 +221,7 @@ body {
 }
 
 .menu-item h3 {
-    font-size: 1.4rem;
+    font-size: 1.25rem;
     margin: 0.75rem 0 0.5rem;
     color: var(--text-primary);
     padding: 0 1rem;
@@ -231,7 +230,7 @@ body {
 
 .menu-item p {
     color: var(--text-secondary);
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     margin: 0.5rem 0;
     padding: 0 1rem;
     text-align: center;
@@ -239,7 +238,7 @@ body {
 
 .menu-item .price {
     color: var(--primary-red);
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     font-weight: 700;
     padding: 0 1rem;
     text-align: center;
@@ -249,9 +248,9 @@ body {
     background: var(--primary-yellow);
     color: var(--text-light);
     border: none;
-    padding: 0.875rem 1.75rem;
+    padding: 0.75rem 1.5rem;
     border-radius: 0.5rem;
-    font-size: 1rem;
+    font-size: 0.95rem;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -315,7 +314,7 @@ body {
     padding: 1rem;
     border-radius: 50px 0 0 50px;
     cursor: pointer;
-    z-index: 1000;
+    z-index: 1100;
     box-shadow: var(--shadow-lg);
     transition: all 0.3s ease;
 }
@@ -352,25 +351,35 @@ body {
     background: var(--bg-primary);
     box-shadow: var(--shadow-xl);
     padding: 1.5rem;
+    padding-top: 1rem;
     transition: right 0.3s ease;
-    z-index: 999;
+    z-index: 1099;
     overflow-y: auto;
-    border-top-left-radius: 2%;  
-    border-bottom-left-radius: 2%; 
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+#cart-sidebar.open {
+    right: 0 !important;
 }
 
 #cart-sidebar h3 {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     color: var(--text-primary);
     border-bottom: 2px solid var(--border-color);
     padding-bottom: 0.75rem;
     margin-bottom: 1rem;
+    flex-shrink: 0;
 }
 
 #cart-items {
-    max-height: 60vh;
+    flex: 1;
+    max-height: none;
     overflow-y: auto;
+    overflow-x: hidden;
     margin-bottom: 1rem;
+    padding-right: 0.5rem;
 }
 
 #cart-items::-webkit-scrollbar {
@@ -385,6 +394,49 @@ body {
 #cart-items::-webkit-scrollbar-thumb {
     background: var(--primary-yellow);
     border-radius: 4px;
+}
+
+#cart-items::-webkit-scrollbar-thumb:hover {
+    background: var(--dark-yellow);
+}
+
+.border-t {
+    border-top: 2px solid var(--border-color);
+    padding-top: 1rem;
+    margin-top: 0.5rem;
+    flex-shrink: 0;
+}
+
+.border-t p {
+    display: flex;
+    justify-content: space-between;
+    margin: 0.5rem 0;
+    color: var(--text-primary);
+}
+
+.border-t p.font-bold {
+    font-size: 1.4rem;
+    color: var(--primary-yellow);
+    font-weight: 700;
+    margin-top: 1rem;
+    padding-top: 0.75rem;
+    border-top: 2px solid var(--primary-yellow);
+}
+
+#place-order {
+    width: 100%;
+    background: var(--primary-red);
+    color: var(--text-light);
+    border: none;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+    box-shadow: var(--shadow-md);
+    flex-shrink: 0;
 }
 
 #cart-items > div {
@@ -468,43 +520,76 @@ body {
     transform: translateY(-2px);
     box-shadow: var(--shadow-lg);
 }
-
 /* ========================================
-   ORDER POPUP
+   ORDER SUMMARY (FIXED + SCROLLABLE + VISIBLE)
    ======================================== */
+
 #order-popup {
     position: fixed;
     bottom: 1rem;
     right: 1rem;
     background: var(--bg-primary);
-    box-shadow: var(--shadow-xl);
+    box-shadow: var(--shadow-2xl);
     border-radius: 1rem;
     padding: 1.5rem;
-    width: 400px;
+    width: 450px;
     max-width: 90vw;
-    z-index: 1001;
-    border: 2px solid var(--primary-yellow);
+
+    /* FIX: Allow too many items to scroll */
+    max-height: 85vh; 
+    overflow-y: auto;
+
+    z-index: 1000;
+    border: 3px solid var(--primary-yellow);
+    animation: slideInUp 0.4s ease-out;
+
+    display: flex;
+    flex-direction: column;
 }
 
 #order-popup.hidden {
     display: none;
 }
 
+/* Scrollbar style */
+#order-popup::-webkit-scrollbar {
+    width: 8px;
+}
+
+#order-popup::-webkit-scrollbar-thumb {
+    background: var(--primary-yellow);
+    border-radius: 4px;
+}
+
+#order-popup::-webkit-scrollbar-thumb:hover {
+    background: var(--dark-yellow);
+}
+
+/* Sticky header of Order Summary */
 #order-popup h2 {
     font-size: 1.5rem;
     color: var(--text-primary);
     margin-bottom: 1rem;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    background: var(--bg-primary);
+    padding: 0.5rem 0;
+    z-index: 20;
+    border-bottom: 2px solid var(--primary-yellow);
 }
 
+/* Order table */
 #order-popup table {
     width: 100%;
     border-collapse: collapse;
     margin: 1rem 0;
+    font-size: 0.9rem;
 }
 
 #order-popup th,
 #order-popup td {
-    padding: 0.5rem;
+    padding: 0.6rem 0.4rem;
     text-align: left;
     border-bottom: 1px solid var(--border-color);
 }
@@ -512,38 +597,70 @@ body {
 #order-popup th {
     background: var(--bg-secondary);
     font-weight: 600;
+    color: var(--text-primary);
 }
 
+/* Download button */
 #download-pdf {
     width: 100%;
     background: var(--primary-red);
     color: var(--text-light);
     border: none;
-    padding: 0.75rem;
+    padding: 0.875rem;
     border-radius: 0.5rem;
-    font-weight: 600;
+    font-weight: 700;
     cursor: pointer;
     transition: all 0.3s ease;
+    font-size: 1rem;
+    margin-top: auto; /* Makes button stay at bottom */
 }
 
 #download-pdf:hover {
     background: var(--dark-red);
+    transform: scale(1.02);
 }
 
+/* Close button */
 #order-popup-close {
     position: absolute;
     top: 0.5rem;
     right: 0.75rem;
     background: none;
     border: none;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     cursor: pointer;
     color: var(--text-secondary);
+    transition: color 0.3s ease;
 }
 
 #order-popup-close:hover {
     color: var(--primary-red);
 }
+
+/* Animation */
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Mobile fix */
+@media (max-width: 768px) {
+    #order-popup {
+        width: calc(100% - 2rem);
+        left: 1rem;
+        right: 1rem;
+        bottom: 0;
+        border-radius: 1rem 1rem 0 0;
+        max-height: 90vh;
+    }
+}
+
 
 /* ========================================
    FOOTER
@@ -561,17 +678,7 @@ footer {
     max-width: 1200px;
     margin: 0 auto 2rem;
 }
-.footer-left {
-    text-align: left; /* Align footer-left content to the left */
-}
 
-.footer-center {
-    text-align: center; /* Center the footer-center content */
-}
-
-.footer-right {
-    text-align: right; /* Align footer-right content to the right */
-}
 .footer-left h3,
 .footer-center h3,
 .footer-right h3 {
@@ -601,7 +708,6 @@ footer {
     display: flex;
     gap: 1rem;
     margin-top: 1rem;
-    justify-content: flex-end;
 }
 
 .social-icons a {
@@ -673,8 +779,12 @@ footer {
     }
 
     #menu .grid {
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-        gap: 1.5rem;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1.25rem;
+    }
+
+    .menu-item {
+        max-width: 100%;
     }
 
     #cart-sidebar {
@@ -722,8 +832,16 @@ footer {
         grid-template-columns: 1fr;
     }
 
+    .menu-item {
+        max-width: 100%;
+    }
+
     .menu-item h3 {
-        font-size: 1.2rem;
+        font-size: 1.15rem;
+    }
+
+    .menu-item img {
+        height: 180px;
     }
 
     #view-more-btn {
