@@ -700,6 +700,7 @@ footer {
     background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
     color: var(--text-light);
     padding: 3rem 2rem 1rem;
+    margin-top: 4rem;
 }
 
 .footer-content {
@@ -709,17 +710,7 @@ footer {
     max-width: 1200px;
     margin: 0 auto 2rem;
 }
-.footer-left {
-    text-align: left; /* Align footer-left content to the left */
-}
 
-.footer-center {
-    text-align: center; /* Center the footer-center content */
-}
-
-.footer-right {
-    text-align: right; /* Align footer-right content to the right */
-}
 .footer-left h3,
 .footer-center h3,
 .footer-right h3 {
@@ -733,23 +724,25 @@ footer {
     color: var(--text-light);
     text-decoration: none;
     margin: 0.5rem 0;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
+    padding-left: 0;
 }
 
 .footer-left a:hover {
     color: var(--primary-yellow);
-    padding-left: 5px;
+    padding-left: 8px;
 }
 
-.footer-center p {
-    color: var(--text-secondary);
+.footer-center p,
+.footer-right p {
+    color: #d1d5db;
+    margin: 0.5rem 0;
 }
 
 .social-icons {
     display: flex;
     gap: 1rem;
     margin-top: 1rem;
-    justify-content: flex-end;
 }
 
 .social-icons a {
@@ -761,20 +754,20 @@ footer {
     background: var(--primary-yellow);
     border-radius: 50%;
     transition: all 0.3s ease;
+    color: var(--text-light);
 }
 
 .social-icons a:hover {
     background: var(--dark-yellow);
-    transform: translateY(-3px);
+    transform: translateY(-4px) scale(1.1);
 }
 
 .footer-bottom {
     text-align: center;
     padding-top: 1.5rem;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
-    color: var(--text-secondary);
+    color: #9ca3af;
 }
-
 
 /* ========================================
    ANIMATIONS
