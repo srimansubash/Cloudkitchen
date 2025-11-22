@@ -417,6 +417,9 @@ main {
 }
 
 #cart-sidebar {
+    display: flex;              /* Flexbox container */
+    flex-direction: column;     /* Stack items vertically */
+    height: 100vh;
     position: fixed;
     right: -400px;
     top: 0;
@@ -453,9 +456,11 @@ main {
     border-bottom: 2px solid var(--primary-yellow);
     padding-bottom: 0.75rem;
     margin-bottom: 1rem;
+    flex-shrink: 0;    
 }
 
 #cart-items {
+     flex: 1;   
     max-height: 55vh;
     overflow-y: auto;
     margin-bottom: 1rem;
@@ -549,6 +554,7 @@ main {
 }
 
 .border-t {
+    flex-shrink: 0;    
     border-top: 2px solid var(--border-color);
     padding-top: 1rem;
     margin-top: 1rem;
@@ -571,6 +577,7 @@ main {
 }
 
 #place-order {
+    flex-shrink: 0;    
     width: 100%;
     background: var(--primary-red);
     color: var(--text-light);
