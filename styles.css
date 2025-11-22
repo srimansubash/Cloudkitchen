@@ -679,6 +679,16 @@ footer {
     margin: 0 auto 2rem;
 }
 
+.footer-left{
+    text-align: left;
+}
+.footer-center{
+    text-align: center;
+}
+.footer-right{
+    text-align: right;
+}
+
 .footer-left h3,
 .footer-center h3,
 .footer-right h3 {
@@ -708,6 +718,7 @@ footer {
     display: flex;
     gap: 1rem;
     margin-top: 1rem;
+    justify-content: flex-end;
 }
 
 .social-icons a {
