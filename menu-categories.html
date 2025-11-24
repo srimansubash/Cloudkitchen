@@ -35,7 +35,7 @@
     <aside id="left-drawer" class="fixed top-0 left-0 h-full w-72 bg-white shadow-2xl -translate-x-full transition-transform duration-300 ease-in-out z-50">
         <!-- Drawer header -->
         <div class="flex items-center justify-between px-4 py-4 border-b">
-            <a href="menu-categories.html" class="group inline-flex items-center" aria-label="Go to categories">
+            <a href="index.html" class="group inline-flex items-center" aria-label="Go to categories">
                 <span class="text-xl font-semibold transition-colors duration-200 group-hover:text-yellow-500">
                     Cloud Kitchen
                 </span>
@@ -55,7 +55,7 @@
                 <i class="fa-solid fa-utensils text-yellow-500"></i>
                 <span>Menu</span>
             </a>
-            <a href="#services" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100">
+            <a href="menu-categories.html#services" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100">
                 <i class="fa-solid fa-briefcase text-yellow-500"></i>
                 <span>Services</span>
             </a>
@@ -63,7 +63,7 @@
                 <i class="fa-solid fa-circle-info text-yellow-500"></i>
                 <span>About Us</span>
             </a>
-            <a href="#footer" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100">
+            <a href="menu-categories.html#footer" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100">
                 <i class="fa-solid fa-envelope text-yellow-500"></i>
                 <span>Contact</span>
             </a>
@@ -327,7 +327,7 @@
 
     <!-- Hamburger Menu Script -->
     <script>
-        const btn = document.getElementById('left-menu-toggle');
+         const btn = document.getElementById('left-menu-toggle');
         const closeBtn = document.getElementById('left-menu-close');
         const drawer = document.getElementById('left-drawer');
         const scrim = document.getElementById('left-drawer-scrim');
@@ -357,8 +357,77 @@
         closeBtn.addEventListener('click', () => setDrawer(false));
         scrim.addEventListener('click', () => setDrawer(false));
 
+        // Close drawer when any navigation link is clicked
+        const drawerLinks = drawer.querySelectorAll('nav a');
+        drawerLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                setDrawer(false);
+            });
+        });
+
         // Start closed with hamburger visible
         setDrawer(false);
+        
+        // Category Scroll Function
+        function scrollCategory(button, direction) {
+            const section = button.closest('.category');
+            const container = section.querySelector('div[class*="grid"]');
+            const scrollAmount = container.offsetWidth * 0.8; // Scroll 80% of container width
+            
+            if (direction === 'left') {
+                container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            } else {
+                container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            }
+            
+            // Update button states after scroll
+            setTimeout(() => updateScrollButtons(section), 300);
+        }
+        
+        // Update scroll button visibility
+        function updateScrollButtons(section) {
+            const container = section.querySelector('div[class*="grid"]');
+            const leftBtn = section.querySelector('.scroll-btn-left');
+            const rightBtn = section.querySelector('.scroll-btn-right');
+            
+            if (!container || !leftBtn || !rightBtn) return;
+            
+            // Check if at start
+            if (container.scrollLeft <= 10) {
+                leftBtn.disabled = true;
+                leftBtn.style.opacity = '0';
+            } else {
+                leftBtn.disabled = false;
+                leftBtn.style.opacity = '1';
+            }
+            
+            // Check if at end
+            if (container.scrollLeft + container.offsetWidth >= container.scrollWidth - 10) {
+                rightBtn.disabled = true;
+                rightBtn.style.opacity = '0';
+            } else {
+                rightBtn.disabled = false;
+                rightBtn.style.opacity = '1';
+            }
+        }
+        
+        // Initialize scroll buttons on page load
+        window.addEventListener('load', () => {
+            document.querySelectorAll('.category').forEach(section => {
+                updateScrollButtons(section);
+                
+                // Add scroll listener to update buttons
+                const container = section.querySelector('div[class*="grid"]');
+                if (container) {
+                    container.addEventListener('scroll', () => updateScrollButtons(section));
+                }
+            });
+        });
+        
+        // Update on window resize
+        window.addEventListener('resize', () => {
+            document.querySelectorAll('.category').forEach(updateScrollButtons);
+        });
     </script>
 
     <script src="script.js"></script>
