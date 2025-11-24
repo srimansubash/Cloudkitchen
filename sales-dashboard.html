@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sales Reports - Cloud Kitchen</title>
+    <title>Sales Dashboard - Cloud Kitchen</title>
     <link rel="stylesheet" href="sales-dashboard.css">
+    <link rel="icon" href="icon.png">
     <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
@@ -13,10 +14,12 @@
     
     <!-- 🧭 Dashboard Header -->
     <div class="dashboard-header">
-        <h1>Sales Reports</h1>
+        <h1>📊 Sales Dashboard</h1>
         <div class="header-actions">
             <!-- 🔗 Navigation Button -->
-            <button id="goToMenuBtn">Go to Menu</button>
+            <button id="goToMenuBtn" class="nav-btn">
+                <span>← Back to Menu</span>
+            </button>
         </div>
     </div>
 
@@ -24,29 +27,62 @@
     <div class="dashboard-controls">
         <select id="salesPeriod">
             <option value="today">Today</option>
+            <option value="week">This Week</option>
             <option value="month">This Month</option>
             <option value="year">This Year</option>
             <option value="custom">Custom Range</option>
         </select>
         <input type="date" id="fromDate" style="display:none">
         <input type="date" id="toDate" style="display:none">
-        <button id="exportPdfBtn">EXPORT PDF</button>
+        <button id="applyFilterBtn" style="display:none">Apply</button>
+        <button id="exportPdfBtn">📄 EXPORT PDF</button>
     </div>
 
     <!-- 💰 Summary Section -->
     <div class="dashboard-summary">
-        <div>
+        <div class="summary-card">
             <span>Total Revenue</span>
-            <div id="totalRevenue" style="font-size:2.5rem;margin-top:8px;"></div>
+            <div id="totalRevenue">₹0.00</div>
         </div>
-        <div>
-            <span>Total Transactions</span>
-            <div id="totalTx" style="font-size:2.5rem;margin-top:8px;"></div>
+        <div class="summary-card">
+            <span>Total Orders</span>
+            <div id="totalOrders">0</div>
+        </div>
+        <div class="summary-card">
+            <span>Avg Order Value</span>
+            <div id="avgOrderValue">₹0.00</div>
         </div>
     </div>
 
+    <!-- 📊 Additional Stats -->
+    <div class="stats-row">
+        <div class="stat-item" data-type="gst">
+            <span>GST Collected</span>
+            <div id="totalGST">₹0.00</div>
+        </div>
+        <div class="stat-item" data-type="delivery">
+            <span>Delivery Charges</span>
+            <div id="totalDelivery">₹0.00</div>
+        </div>
+        <div class="stat-item" data-type="items">
+            <span>Items Sold</span>
+            <div id="totalItems">0</div>
+        </div>
+    </div>
+
+    <!-- 📋 Sales List Header -->
+    <div class="sales-list-header">
+        <h2>Recent Orders</h2>
+        <button id="clearAllBtn" class="clear-btn">Clear All Data</button>
+    </div>
+
     <!-- 📋 Sales List -->
-    <div class="sale-list" id="saleList"></div>
+    <div class="sale-list" id="saleList">
+        <div class="no-data">
+            <p>No orders yet</p>
+            <small>Orders will appear here once customers place them</small>
+        </div>
+    </div>
 </div>
 
 <script src="sales-dashboard.js"></script>

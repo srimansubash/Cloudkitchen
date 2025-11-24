@@ -1,6 +1,7 @@
 // ---------- Persistence keys ----------
 const CART_KEY = "ck.cart.v1";
 const ORDER_ID_KEY = "ck.lastOrderId.v1";
+const ORDERS_KEY = "ck.orders.v1";
 
 // ---------- State ----------
 let cart = [];
@@ -182,7 +183,35 @@ function renderOrderSummary() {
     if (orderPopupContent) orderPopupContent.innerHTML = html;
 }
 
-// ---------- Auto-close helpers ----------
+// ---------- Save order to history ----------
+function saveOrderToHistory() {
+    const { subtotal, gst, delivery, total } = computeTotals(cart);
+    
+    const order = {
+        orderId: orderId,
+        timestamp: Date.now(),
+        items: cart.map(item => ({
+            name: item.name,
+            price: item.price,
+            quantity: item.quantity,
+            image: item.image
+        })),
+        subtotal: subtotal,
+        gst: gst,
+        delivery: delivery,
+        total: total
+    };
+    
+    // Get existing orders
+    const ordersData = localStorage.getItem(ORDERS_KEY);
+    const orders = ordersData ? JSON.parse(ordersData) : [];
+    
+    // Add new order
+    orders.push(order);
+    
+    // Save back to localStorage
+    localStorage.setItem(ORDERS_KEY, JSON.stringify(orders));
+}
 function closeAndClearOrder() {
     if (orderPopup) orderPopup.classList.add("hidden");
     orderSummaryVisible = false;
@@ -204,6 +233,15 @@ if (placeOrderBtn) {
             alert("Your cart is empty.");
             return;
         }
+        
+        // Generate order ID if not exists
+        if (!orderId) {
+            orderId = Math.floor(100000 + Math.random() * 900000);
+        }
+        
+        // Save order to history
+        saveOrderToHistory();
+        
         orderSummaryVisible = true;
         renderOrderSummary();
         if (orderPopup) orderPopup.classList.remove("hidden");
